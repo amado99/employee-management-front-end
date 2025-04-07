@@ -1,0 +1,49 @@
+<div class="flex justify-center px-4" style="padding-top: 15vh;padding-left: 25vh;padding-right: 25vh;">
+    <mat-card>
+        <div >
+          <mat-form-field appearance="outline">
+            <mat-label>ID del Empleado</mat-label>
+            <input matInput type="number" [(ngModel)]="employeeId" name="employeeId" placeholder="Solo números">
+          </mat-form-field>
+           <button mat-raised-button color="primary" (click)="getEmployee()">
+            Buscar
+          </button>
+
+        </div>
+    
+        <div class="overflow-auto">
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 w-full">
+        
+            <ng-container matColumnDef="ID">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="NOMBRE">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
+              <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="EDAD">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> EDAD </th>
+              <td mat-cell *matCellDef="let element"> {{element.employeeAge}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="SALARIO">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> SALARIO </th>
+              <td mat-cell *matCellDef="let element"> {{element.employeeSalary | currency:'COP $ ':'symbol':'1.2'}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="SALARIO_ANUAL">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> SALARIO ANUAL </th>
+              <td mat-cell *matCellDef="let element"> {{element.employeeSalaryAnnual | currency:'COP $ ':'symbol':'1.2'}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+      
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+  </mat-card>
+</div>

@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  @media (min-width: 600px) {
+    .search-container {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  
+  .search-input {
+    width: 250px;
+  }
+  
+  .search-button {
+    height: 56px;
+    width: 250px;
+  }
